@@ -134,27 +134,27 @@ while True:
                    symbol_fields[7]]
             writer.writerow(row)
 
-        with open('filename.csv', 'r') as file:
+        with open('openOrder.csv', 'r') as file:
             csv_reader = csv.reader(file)
             data = list(csv_reader)
 
-        second_to_last_row = data[-2]
-        if symbol_fields[6] == second_to_last_row[6]:
+        second_to_last_row = data[-1]
+        if symbol_fields[6] == second_to_last_row[3]:
             continue
         else:
             def options_order_1(symbol):
                 # Create SELL Contract Object
                 contract_1 = Contract()
-                contract_1.symbol = second_to_last_row[0]
-                contract_1.secType = second_to_last_row[1]
-                contract_1.exchange = second_to_last_row[2]
-                contract_1.currency = second_to_last_row[3]
-                contract_1.lastTradeDateOrContractMonth = second_to_last_row[4]
-                contract_1.strike = second_to_last_row[5]
-                contract_1.right = second_to_last_row[6]
-                contract_1.multiplier = second_to_last_row[7]
+                contract_1.symbol = second_to_last_row[1]
+                contract_1.secType = second_to_last_row[4]
+                contract_1.exchange = second_to_last_row[6]
+                contract_1.currency = 'USD'
+                contract_1.lastTradeDateOrContractMonth = second_to_last_row[5]
+                contract_1.strike = second_to_last_row[2]
+                contract_1.right = second_to_last_row[3]
+                contract_1.multiplier = '50'
                 return contract_1
-
+            #115,ES,4010.0,C,FOP,20230302,CME,BUY,MKT,1.0,Filled
             # Define the BUY Contract and Order Objects
             def options_order_2(symbol):
                 # Create BUY Contract Object
