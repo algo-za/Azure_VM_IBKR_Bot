@@ -64,6 +64,21 @@ class IBapi(EWrapper, EClient):
                    order.totalQuantity,
                    orderState.status]
             writer.writerow(row)
+        data = {
+            "orderId": orderId,
+            "action": order.action,
+            "quantity": order.totalQuantity,
+            "symbol": contract.symbol,
+            "security": contract.secType,
+            "strike": contract.strike,
+            "right": contract.right,
+            "expiry_date": contract.lastTradeDateOrContractMonth,
+            "status": orderState.status
+        }
+        url = "https://eoezaaherrophkn.m.pipedream.net"
+        headers = {"Authorization": "360d90f4549def76cc1e370e71832b67"}
+        requests.post(url, headers=headers, json=data)
+
 
     def execDetails(self, reqId, contract, execution):
         print('Order Executed: ', reqId, contract.symbol, contract.strike, contract.right, contract.secType,
