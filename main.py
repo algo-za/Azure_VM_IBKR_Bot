@@ -96,7 +96,7 @@ class IBapi(EWrapper, EClient):
             "shares": execution.shares,
             "lastLiquidity": execution.lastLiquidity
         }
-        url = "https://eoqlqyok7ol5g9t.m.pipedream.net"
+        url = "https://eoi0pzrkcho7847.m.pipedream.net"
         headers = {"Authorization": "360d90f4549def76cc1e370e71832b67"}
         requests.post(url, headers=headers, json=data)
 
